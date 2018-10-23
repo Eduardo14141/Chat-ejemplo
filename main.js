@@ -32,7 +32,7 @@ app.post("/send", (req, res)=>{
 	return res.json({text: "Mensaje enviado"});
 });
 
-io.on("connection", (socket)=>{
+/*io.on("connection", (socket)=>{
 	console.log("Se ha realizado una nueva conexión con: " + socket.id);
 	socket.on("disconnect", ()=>{
 		clientes = clientes.filter(cliente =>
@@ -40,7 +40,7 @@ io.on("connection", (socket)=>{
 		);
 		io.emit("socket desconectado", {text: "El socket se desconectó", id: socket.id});
 	});
-	/*socket.on("typing", ()=>{
+	socket.on("typing", ()=>{
 		socket.emit("")
-	})*/
-});
+	})
+});*/
