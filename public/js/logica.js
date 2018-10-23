@@ -57,4 +57,27 @@ socket.on('mensaje', function(data){
 		document.querySelector(".msg-container").innerHTML += msg;
 	}
 	document.querySelector("#msg-container").scrollIntoView(false);
-})
+});
+socket.on('socket_desconectado', function(data){
+	console.log(data);
+	clientes= clientes.filter( cliente =>{
+		console.log(cliente);
+		return cliente.id != data.id;
+	});
+	list.innerHTML+= "Se cuida joven....";
+	let html = '';
+	clientes.forEach(function(cliente){
+		html+= "<li>"+cliente.username+"</li>"
+	});
+	list.innerHTML = html;
+});
+socket.on('socket_conectado', function(data){
+	console.log(data);
+	clientes.push(data);
+	list.innerHTML+= "Hola joven....";
+	let html = '';
+	clientes.forEach(function(cliente){
+		html+= "<li>"+cliente.username+"</li>"
+	});
+	list.innerHTML = html;
+});
